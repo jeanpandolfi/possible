@@ -3,14 +3,12 @@ package br.com.jeanpandolfi;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class PossibleMain {
 
     public static void main(String[] args) {
         System.out.println(isAnagrama("!@#$%&*()", ")(*&$#@!%"));
-
-        List<String> palavras = List.of("amor", "roma", "ramo", "remo", "orem", "mero", "ripa", "pair");
+        List<String> palavras = List.of("ripa", "amor","orem" , "ramo", "remo", "mero", "pair", "roma");
         List<List<String>> anagramas = new ArrayList<>();
         separarEmAnagramas(palavras, anagramas);
         System.out.println(anagramas);
@@ -33,20 +31,26 @@ public class PossibleMain {
 
     static void separarEmAnagramas(List<String> palavras, List<List<String>> anagramas){
         if(!palavras.isEmpty()){
-            //TODO Pode ser revisto filtrar duas vezes
-            List<String> umAnagrama = palavras.stream().filter( palavra -> isAnagrama(palavra, palavras.get(0))).collect(Collectors.toList());
-            List<String> palavrasRestantes = palavras.stream().filter( palavra -> !isAnagrama(palavra, palavras.get(0))).collect(Collectors.toList());
+            List<String> umAnagrama = new ArrayList<>();
+            List<String> palavrasRestantes = new ArrayList<>();
+            palavras.forEach( palavra -> {
+                if(isAnagrama(palavra, palavras.get(0))){
+                    umAnagrama.add(palavra);
+                }else{
+                    palavrasRestantes.add(palavra);
+                }
+            });
             anagramas.add(umAnagrama);
             separarEmAnagramas(palavrasRestantes, anagramas);
         }
     }
 
-    static Boolean isPrimo(Integer numero){
-        if(numero < 2) return false;
-        List<Integer> divisores = List.of(2,3,5,7);
-
-        for (Integer divisor : divisores){
-            if(numero % divisor == 0 && !numero.equals(divisor)){
+    public static boolean isPrimo(Integer number) {
+        if (number % 2 == 0) {
+            return false;
+        }
+        for (int i = 3; i * i <= number; i += 2) {
+            if (number % i == 0) {
                 return false;
             }
         }
