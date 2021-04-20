@@ -16,12 +16,12 @@ public class PossibleMainTest{
     @Test
     public void deveAcertarSeEAnagrama(){
         String palavra = TestUtils.gerarPalavra();
-        assertTrue(PossibleMain.isAnagrama(palavra, TestUtils.shuffle(palavra)));
+        assertTrue(FuncoesUtils.isAnagrama(palavra, TestUtils.shuffle(palavra)));
     }
 
     @Test
     public void deveErrarSeEAnagrama(){
-        assertFalse(PossibleMain.isAnagrama(TestUtils.gerarPalavra(), TestUtils.gerarPalavra()));
+        assertFalse(FuncoesUtils.isAnagrama(TestUtils.gerarPalavra(), TestUtils.gerarPalavra()));
     }
 
     @Test
@@ -36,7 +36,7 @@ public class PossibleMainTest{
             palavras.add(TestUtils.shuffle(palavra));
         }
 
-        PossibleMain.separarEmAnagramas(palavras, anagramas);
+        FuncoesUtils.separarEmAnagramas(palavras, anagramas);
         assertTrue(anagramas.get(RandomUtils.nextInt(1,tamanho)).size() == 2);
     }
 
@@ -52,7 +52,7 @@ public class PossibleMainTest{
             palavras.add(TestUtils.shuffle(palavra));
         }
 
-        PossibleMain.separarEmAnagramas(palavras, anagramas);
+        FuncoesUtils.separarEmAnagramas(palavras, anagramas);
         assertFalse(anagramas.get(RandomUtils.nextInt(1,tamanho)).size() == 1);
     }
 
@@ -60,7 +60,7 @@ public class PossibleMainTest{
     public void deveAcertarSeEPrimo(){
         int quantidadeNumerosPrimos = 0;
         for(int i = 0; i < 1000000; i++){
-            if(PossibleMain.isPrimo(i)){
+            if(FuncoesUtils.isPrimo(i)){
                 quantidadeNumerosPrimos++;
             }
         }
