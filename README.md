@@ -1,8 +1,6 @@
 # Exercícios Java Possible
   Esse é um projeto Maven e pode ser importado em sua IDE abrindo um projeto Maven padrão apontando para o arquivo pom.xml.
-  Como de requisito era criar funções, foi criado uma classe que contém as funções a seram chamadas de forma estática sem necessidade de instanciar os objetos.
-
-  Pa  
+  Como de requisito era criar funções, foi criado uma classe que contém as funções a seram chamadas de forma estática sem necessidade de instanciar os objetos. 
 
 
 ## Exercício 1
